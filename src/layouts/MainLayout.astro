@@ -1,0 +1,19 @@
+---
+import Header from '../components/Header.astro';
+const { title } = Astro.props;
+import "../styles/global.css";
+---
+
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{title}</title>
+</head>
+<body class="bg-purple-900 overflow-y-scroll snap-mandatory snap-y">
+    <Header />
+    <main class="bg-purple-900 flex flex-col items-center justify-center pt-16">
+        <slot />
+    </main>
+</body>
+</html>

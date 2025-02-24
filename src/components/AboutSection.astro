@@ -1,0 +1,24 @@
+---
+import SectionTitle from '../components/Title.astro';
+import InfoCard from '../components/AboutCard.astro';
+import aboutData from '../Data/AboutList.json';
+---
+
+<section id="about" class="min-h-screen w-full text-white flex flex-col items-center snap-start relative bg-purple-700">
+  <SectionTitle text="Sobre Mi" />
+  
+  <p class="text-center mb-10 max-w-2xl px-4 text-lg leading-relaxed animate-fade-in-up delay-100 relative">
+    Veo cada proyecto como una oportunidad para innovar y ofrecer soluciones que puedan mejorar la vida de muchas personas.
+    <span class="inline-block animate-float">💡</span>
+  </p>
+
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-screen-lg px-4 animate-staggered-fade mb-6">
+    {Object.entries(aboutData).map(([category, data]) => (
+      <InfoCard 
+        title={category.charAt(0).toUpperCase() + category.slice(1)} 
+        description={data.description}
+        items={data.items} 
+      />
+    ))}
+  </div>
+</section>

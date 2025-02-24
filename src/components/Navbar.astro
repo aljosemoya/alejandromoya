@@ -1,0 +1,31 @@
+---
+const links = [
+    { href: "/", text: "Inicio" },
+    { href: "/Projects", text: "Proyectos" }
+];
+---
+
+<nav class="container mx-auto px-6 py-4 max-w-7xl">
+    <div class="flex items-center justify-between">
+        <a href="#" class="text-2xl font-semibold text-white tracking-tight">
+            Alejandro Moya 
+        </a>
+        <ul class="flex items-center space-x-8">
+            {links.map(link => (
+                <li>
+                    <a href={link.href} class="text-purple-100 hover:text-white transition-colors duration-300 relative group">
+                        {link.text}
+                        <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-white transition-all duration-300 group-hover:w-full"></span>
+                    </a>
+                </li>
+            ))}
+            <li class="ml-4">
+                <a href="#" class="bg-green-500 text-white px-6 py-2 rounded-md font-semibold 
+                              hover:bg-opacity-90 transition-all duration-300 shadow-sm hover:shadow-md
+                              transform hover:scale-105">
+                    Contáctame
+                </a>
+            </li>
+        </ul>
+    </div>
+</nav>

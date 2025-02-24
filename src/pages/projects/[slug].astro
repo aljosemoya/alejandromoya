@@ -1,0 +1,42 @@
+---
+import Layout from '../../layouts/MainLayout.astro';
+import { getCollection, getEntry } from 'astro:content';
+
+// Generar paths estáticos
+export async function getStaticPaths() {
+  const projects = await getCollection('projects');
+  return projects.map((project) => ({
+    params: { slug: project.slug },
+  }));
+}
+const { slug } = Astro.params;
+if (!slug) {
+  return new Response(null, { status: 404 });
+}
+
+const project = await getEntry('projects', slug);
+const { Content, headings } = await project.render();
+---
+
+<Layout title={project.data.title}>
+  <section class="container mx-auto px-4 sm:px-6 lg:px-8 py-16 mt-16">
+    <div class="max-w-7xl mx-auto">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-16 items-start">
+        {project.data.imageSrc && (
+            <div class="relative group rounded-2xl overflow-hidden shadow-2xl">
+              <img 
+                src={project.data.imageSrc} 
+                alt={project.data.altText || 'Imagen del proyecto'} 
+                class="w-full h-auto max-w-full object-contain"
+                loading="lazy"
+              />
+              <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
+            </div>
+          )}
+        <article class="text-white">
+            <Content />
+        </article>
+      </div>
+    </div>
+  </section>
+</Layout>

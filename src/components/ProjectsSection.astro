@@ -1,0 +1,25 @@
+---
+import SectionTitle from '../components/Title.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+import { getCollection, type CollectionEntry } from 'astro:content';
+type Project = CollectionEntry<'projects'> & { slug: string };
+const projects: Project[] = await getCollection('projects') as Project[];
+---
+
+<section class="container mx-auto py-12 mt-20 text-center">
+  <SectionTitle text="Mis Proyectos" />
+  <div class="grid grid-cols-1 md:grid-cols-2 md:grid-rows-2 gap-8">
+    {projects.map((project) => (
+      <ProjectCard 
+        key={project.slug}
+        title={project.data.title}  
+        imageSrc={project.data.imageSrc}
+        altText={project.data.altText}
+        isFeatured={project.data.isFeatured}
+        href={`/projects/${project.slug}`} 
+      >
+        {project.data.Summary}  
+      </ProjectCard>
+    ))}
+  </div>
+</section>

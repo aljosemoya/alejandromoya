@@ -1,0 +1,23 @@
+---
+import TechnologyCard from './TechnologyCard.astro';
+
+type Technology = {
+  icon: string;
+  name: string;
+  proficiency: number;
+};
+const { title, technologies } = Astro.props;
+---
+
+<div>
+  <h2 class="text-2xl font-semibold mb-6">{title}</h2>
+  <div class="grid grid-cols-2 md:grid-cols-4 gap-8 items-center">
+    {technologies.map((tech: Technology) => (
+      <TechnologyCard 
+        icon={tech.icon} 
+        name={tech.name} 
+        proficiency={tech.proficiency} 
+      />
+    ))}
+  </div>
+</div>

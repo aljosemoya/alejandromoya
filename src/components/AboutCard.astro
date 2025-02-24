@@ -1,0 +1,13 @@
+---
+const { title, items, description } = Astro.props;
+---
+
+<div class="p-6 bg-white/10 rounded-xl backdrop-blur-sm border border-white/20 transition-all duration-300 hover:bg-white/15 hover:shadow-xl hover:-translate-y-2 hover:border-purple-300/30 min-h-[200px] overflow-auto">
+  <h3 class="text-xl font-bold mb-2 text-cyan-400">{title}</h3>
+  <p class="px-4 text-lg leading-relaxed animate-fade-in-up delay-100 relative font-medium">
+    {description}
+  </p>  
+  <ul class="list-disc list-inside space-y-2 text-purple-50/90">
+    {items.map(item => <li>{item}</li>)}
+  </ul>
+</div>

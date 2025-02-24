@@ -1,0 +1,15 @@
+---
+import TechnologyCategory from "../components/TechnologyCategory.astro";
+import infoTech from '../Data/Technologies.json';
+import SectionTitle from '../components/Title.astro';
+---
+
+<section class="h-screen w-full mx-auto text-white text-center flex flex-col snap-start bg-purple-">
+  <SectionTitle text="Tecnologías" />
+  
+  <div class="space-y-10">
+    {Object.entries(infoTech).map(([category, technologies]) => (
+      <TechnologyCategory title={category.charAt(0).toUpperCase() + category.slice(1) + ":"} technologies={technologies} />
+    ))}
+  </div>
+</section>
