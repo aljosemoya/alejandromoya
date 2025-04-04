@@ -1,0 +1,74 @@
+---
+slug: Ecommerce
+imageSrc: /images/e-commerce Architecture Explain.png
+altText: Proyecto Ecommerce
+isFeatured: false
+Summary: "**Infraestructura e-commerce en Azure** con frontend (web apps), backend (APIs + colas), almacenamiento (media/ACR), base de datos (SQL + Redis) y búsqueda (Cognitive Search). Desplegada con Terraform, escalable y segura para clientes (frontoffice) y administradores (backoffice)."
+---
+# Infraestructura E-commerce en Azure
+
+Infraestructura diseñada para un sistema de comercio electrónico (e-commerce) en Azure, utilizando servicios escalables y gestionados.
+
+---
+
+## Descripción General
+Arquitectura modular que incluye:
+- **Frontend**: Aplicaciones web para usuarios (frontoffice) y administradores (backoffice).
+- **Backend**: APIs y procesamiento asíncrono.
+- **Almacenamiento**: Multimedia y colas de mensajería.
+- **Base de Datos**: SQL Server para información transaccional.
+- **Cache**: Redis para optimizar rendimiento.
+- **Búsqueda**: Azure Cognitive Search para funcionalidades de búsqueda.
+
+---
+
+## Componentes Clave
+
+### 🖥 Frontend
+| Tipo | Servicio | Descripción |
+|------|----------|-------------|
+| Web App | `moyauifrontoffice` | Interfaz para clientes |
+| Web App | `moyauibackoffice` | Panel de administración |
+| Static Web App | `website` | Contenido estático (ej: landing pages) |
+
+### ⚙ Backend
+| Tipo | Servicio | Descripción |
+|------|----------|-------------|
+| Web App | `moyaapifrontoffice` | API para frontoffice |
+| Web App | `moyaapibackoffice` | API para backoffice |
+| Storage Queue | `procesosasincronos` | Cola para tareas en segundo plano |
+
+### 📦 Almacenamiento
+| Tipo | Servicio | Uso |
+|------|----------|-----|
+| Storage Account | `samediamoya` | Archivos multimedia (imágenes/videos) |
+| Storage Account | `saqueuemoya` | Mensajería entre servicios |
+| Container Registry | `acrmoya` | Almacén de imágenes Docker |
+
+### 🗃 Base de Datos
+| Servicio | Descripción |
+|----------|-------------|
+| SQL Server | Base de datos transaccional (`dbsql`) |
+| Redis Cache | Cache de sesiones y datos frecuentes |
+
+### 🔍 Búsqueda
+| Servicio | Función |
+|----------|---------|
+| Cognitive Search | Búsqueda de productos/catálogo |
+
+---
+
+## Diagrama de Flujo
+```mermaid
+graph TD
+    Usuarios --> Frontend
+    Administradores --> Backoffice
+    Frontend --> API_Frontoffice
+    Backoffice --> API_Backoffice
+    API_Frontoffice --> SQL[Base de Datos]
+    API_Frontoffice --> Redis[Cache]
+    API_Frontoffice --> Search[Búsqueda]
+    API_Frontoffice --> Colas[Procesos Asíncronos]
+    API_Frontoffice --> Media[Almacenamiento Multimedia]
+    Deployment[Terraform] -->|Gestiona| TodosComponentes
+    ACR[Container Registry] -->|Despliega| WebApps
