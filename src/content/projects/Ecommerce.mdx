@@ -58,17 +58,3 @@ Arquitectura modular que incluye:
 
 ---
 
-## Diagrama de Flujo
-```mermaid
-graph TD
-    Usuarios --> Frontend
-    Administradores --> Backoffice
-    Frontend --> API_Frontoffice
-    Backoffice --> API_Backoffice
-    API_Frontoffice --> SQL[Base de Datos]
-    API_Frontoffice --> Redis[Cache]
-    API_Frontoffice --> Search[Búsqueda]
-    API_Frontoffice --> Colas[Procesos Asíncronos]
-    API_Frontoffice --> Media[Almacenamiento Multimedia]
-    Deployment[Terraform] -->|Gestiona| TodosComponentes
-    ACR[Container Registry] -->|Despliega| WebApps
