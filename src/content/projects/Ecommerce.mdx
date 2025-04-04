@@ -3,7 +3,7 @@ slug: Ecommerce
 imageSrc: /images/ecommerce.png
 altText: Proyecto Ecommerce
 isFeatured: false
-Summary: "**Infraestructura e-commerce en Azure** con frontend (web apps), backend (APIs + colas), almacenamiento (media/ACR), base de datos (SQL + Redis) y búsqueda (Cognitive Search). Desplegada con Terraform, escalable y segura para clientes (frontoffice) y administradores (backoffice)."
+Summary: "Infraestructura e-commerce en Azure con frontend (web apps), backend (APIs + colas), almacenamiento (media/ACR), base de datos (SQL + Redis) y búsqueda (Cognitive Search). Desplegada con Terraform, escalable y segura para clientes (frontoffice) y administradores (backoffice)."
 ---
 # Infraestructura E-commerce en Azure
 
@@ -22,39 +22,5 @@ Arquitectura modular que incluye:
 
 ---
 
-## Componentes Clave
 
-### 🖥 Frontend
-| Tipo | Servicio | Descripción |
-|------|----------|-------------|
-| Web App | `moyauifrontoffice` | Interfaz para clientes |
-| Web App | `moyauibackoffice` | Panel de administración |
-| Static Web App | `website` | Contenido estático (ej: landing pages) |
-
-### ⚙ Backend
-| Tipo | Servicio | Descripción |
-|------|----------|-------------|
-| Web App | `moyaapifrontoffice` | API para frontoffice |
-| Web App | `moyaapibackoffice` | API para backoffice |
-| Storage Queue | `procesosasincronos` | Cola para tareas en segundo plano |
-
-### 📦 Almacenamiento
-| Tipo | Servicio | Uso |
-|------|----------|-----|
-| Storage Account | `samediamoya` | Archivos multimedia (imágenes/videos) |
-| Storage Account | `saqueuemoya` | Mensajería entre servicios |
-| Container Registry | `acrmoya` | Almacén de imágenes Docker |
-
-### 🗃 Base de Datos
-| Servicio | Descripción |
-|----------|-------------|
-| SQL Server | Base de datos transaccional (`dbsql`) |
-| Redis Cache | Cache de sesiones y datos frecuentes |
-
-### 🔍 Búsqueda
-| Servicio | Función |
-|----------|---------|
-| Cognitive Search | Búsqueda de productos/catálogo |
-
----
 
