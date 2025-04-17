@@ -54,3 +54,13 @@
     from { opacity: 0; transform: translateY(20px); }
     to { opacity: 1; transform: translateY(0); }
 }
+
+.markdownStyle {
+    h1 {@apply text-center text-4xl font-bold bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent mb-4 mt-6;}
+    h2 {@apply text-2xl font-semibold text-cyan-200 mb-4 mt-6 tracking-normal leading-snug;}
+    h3 {@apply text-xl font-medium text-purple-50 mb-4 mt-6 tracking-wide leading-relaxed;}
+
+    ul {@apply list-disc list-inside mb-4;}
+    ol {@apply list-decimal list-inside mb-4;}
+    li {@apply mb-2;}
+}
