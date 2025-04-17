@@ -10,7 +10,9 @@ const links = [
         <a href="#" class="text-2xl font-semibold text-white tracking-tight">
             Alejandro Moya 
         </a>
-        <ul class="flex items-center space-x-8">
+        
+        {/*desktop*/}
+        <ul class="hidden md:flex items-center space-x-8">
             {links.map(link => (
                 <li>
                     <a href={link.href} class="text-purple-100 hover:text-white transition-colors duration-300 relative group">
@@ -27,5 +29,53 @@ const links = [
                 </a>
             </li>
         </ul>
+        
+        {/*móvil*/}
+        <button 
+            id="mobile-menu-button"
+            class="md:hidden text-white focus:outline-none"
+            aria-label="Toggle menu"
+        >
+            <svg id="menu-icon" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+            <svg id="close-icon" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+        </button>
+    </div>
+    
+    {/* Menú móvil */}
+    <div id="mobile-menu" class="hidden md:hidden mt-4 pb-4">
+        <ul class="flex flex-col space-y-4">
+            {links.map(link => (
+                <li>
+                    <a href={link.href} class="block text-purple-100 hover:text-white transition-colors duration-300 py-2">
+                        {link.text}
+                    </a>
+                </li>
+            ))}
+            <li>
+                <a href="#" class="block bg-green-500 text-white px-6 py-2 rounded-md font-semibold 
+                           hover:bg-opacity-90 transition-all duration-300 text-center">
+                    Contáctame
+                </a>
+            </li>
+        </ul>
     </div>
 </nav>
+
+<script is:inline>
+document.addEventListener('DOMContentLoaded', () => {
+    const menuButton = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const menuIcon = document.getElementById('menu-icon');
+    const closeIcon = document.getElementById('close-icon');
+
+    menuButton.addEventListener('click', () => {
+        const isOpen = mobileMenu.classList.toggle('hidden');
+        menuIcon.classList.toggle('hidden', !isOpen);
+        closeIcon.classList.toggle('hidden', isOpen);
+    });
+});
+</script>
