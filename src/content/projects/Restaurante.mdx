@@ -1,63 +1,123 @@
 ---
 slug: Restaurante
+title: "La Solución Perfecta para la Gestión de Restaurantes"
 imageSrc: /images/restaurante.png
-altText: Proyecto Fend
+altText: Proyecto Restaurante
 isFeatured: false
 Summary: "Es una solución integral y eficiente para la gestión de restaurantes, diseñada para conectar a chefs, camareros, administradores y clientes. A través de nuestra plataforma, mejoramos la experiencia gastronómica, optimizando tanto la operatividad interna como la satisfacción del cliente."
+Repository: "https://github.com/aljosemoya/FRONT-RESTAURANTE"
 ---
+
 # **La Solución Perfecta para la Gestión de Restaurantes**
 
 
 Es una solución integral y eficiente para la gestión de restaurantes, diseñada para conectar a chefs, camareros, administradores y clientes. A través de nuestra plataforma, mejoramos la experiencia gastronómica, optimizando tanto la operatividad interna como la satisfacción del cliente.
 
-# **Principales Funcionalidades**
----
 
-## **Para Clientes: Pedido Rápido y Personalizado**
+## **Objetivo General del Proyecto**
+Desarrollar una aplicación de **Administracion de Restaurante** que permita implementar el desarrollo de un sistema Front-End (**PHP Laravel**) que consuma una API Rest (**Java Spring Boot**) construida en otro lenguaje de programación mediante **Guzzle**.
 
-- **Menú Digital Interactivo**: Los clientes pueden acceder al menú digital, visualizar las opciones disponibles y hacer su pedido desde su celular, asegurando una experiencia sin contacto y rápida.
-- **Recomendaciones Personalizadas**: Con base en las preferencias del cliente y su historial de pedidos, sugiere platillos recomendados, promociones y combinaciones especiales.
+## **Principales Funcionalidades**
 
----
+### **1. Vista de Carga o Vista Principal.** 
+Esta es la primera vista que se carga al inicializar el
+proyecto. Posee en su cuerpo y pie de página información general, y en su header una
+barra de navegación que nos permite explorar tres de las funcionalidades principales:
 
-## **Para Chefs: Organización Eficiente de Pedidos**
+- Menú (Generar Orden)
+- Factura (Generar Factura en base a orden) 
+- Administración (incluye la posibilidad de manejar inventario)
 
-- **Pedidos en Tiempo Real**: Los chefs reciben los pedidos directamente en su estación, con toda la información detallada sobre los platos y las preferencias del cliente.
-- **Control de Inventario Automatizado**: Gestiona el inventario de ingredientes, alertando a los chefs y administradores sobre la necesidad de reposición cuando los niveles de existencias sean bajos.
-- **Recetas Inteligentes**: Recibe sugerencias automáticas de recetas basadas en la disponibilidad de ingredientes, optimizando la cocina y reduciendo el desperdicio.
+<div class="flex justify-center my-4">
+  <img 
+    src="/images/restaurante.png" 
+    alt="Interfaz del Restaurante" 
+    class="rounded-lg"
+  />
+</div>
 
----
 
-## **Para Camareros: Servicio Ágil y Preciso**
+### **2. Menú de Restaurante**
+El menú, una de las partes esenciales de todo restaurante. Nos permite ver una lista
+ilustrativa de los platillos disponibles junto con su información más relevante:
+Fotografía, Nombre, Ingredientes y precio. A la par nos encontramos con un botón de
+agregar, el cual nos permite agregar los platillos a un carrito de compras. En caso de
+que deseáramos completar una orden simplemente damos clic sobre el carrito de
+compras ubicado en el header. Lo cual generará una orden con la información de los
+platillos que hemos seleccionado. El hogar a la par del carrito de compras nos permite
+volver a la vista principal. 
 
-- **Pedidos a un Clic**: Los camareros pueden tomar pedidos directamente desde sus dispositivos, sin necesidad de anotar manualmente. Los pedidos llegan de inmediato a la cocina.
-- **Gestión de Reservas**: Mantén un registro en tiempo real de las reservas, asigna mesas y notifica a los clientes cuando su mesa esté lista.
-- **Notificaciones Instantáneas**: Recibe alertas cuando los pedidos estén listos para ser servidos, optimizando la eficiencia del servicio.
+<div class="flex justify-center my-4">
+  <img 
+    src="/images/restaurante-menu.png" 
+    alt="Interfaz del Restaurante" 
+    class="rounded-lg"
+  />
+</div>
 
----
+### **3. Factura de Restaurante**
+La vista de Facturación nos presenta un formulario que nos permitirá generar una
+factura de una orden ya existente. Posee los campos esenciales de una factura como
+lo son: Sub Total, Descuento, Impuesto y total. 
 
-## **Para Administradores: Control Total del Restaurante**
+<div class="flex justify-center my-4">
+  <img 
+    src="/images/restaurante-factura.png" 
+    alt="Interfaz del Restaurante" 
+    class="rounded-lg"
+  />
+</div>
 
-- **Dashboard de Gestión**: Visualiza en tiempo real el desempeño del restaurante, incluyendo ventas, ocupación de mesas, tiempos de espera y más.
-- **Análisis de Ventas y Rendimiento**: Accede a reportes detallados sobre las ventas por platillo, tendencias de consumo y rentabilidad de cada sección del menú.
-- **Gestión de Empleados**: Administra horarios de trabajo, tareas y evaluaciones de desempeño de los empleados del restaurante.
+### **3. Principal Administrador Restaurante**
+Vista de Administrador de Restaurante que nos permite explorar sobre las distintas
+funcionalidades que posee el proyecto. Edición de Platillos, Edición de Ingredientes y
+Clientes. Disponibles en la barra de navegación izquierda.
+<div class="flex justify-center my-4">
+  <img 
+    src="/images/restaurante-admin.png" 
+    alt="Interfaz del Restaurante" 
+    class="rounded-lg"
+  />
+</div>
+### **4. Ver Platillo Administrador Restaurante**
+<div class="flex justify-center my-4">
+  <img 
+    src="/images/restaurante-ver-platillos.png" 
+    alt="Interfaz del Restaurante" 
+    class="rounded-lg"
+  />
+</div>
+### **5. Eliminar Platillo Administrador Restaurante**
+<div class="flex justify-center my-4">
+  <img 
+    src="/images/restaurante-eliminar-platillos.png" 
+    alt="Interfaz del Restaurante" 
+    class="rounded-lg"
+  />
+</div>
+### **6. Crear Platillo Administrador Restaurante**
+<div class="flex justify-center my-4">
+  <img 
+    src="/images/restaurante-crear-platillos.png" 
+    alt="Interfaz del Restaurante" 
+    class="rounded-lg"
+  />
+</div>
 
----
 
-### Funcionalidades Adicionales en Desarrollo:
+
+## Funcionalidades Adicionales en Desarrollo:
 
 - **Recomendaciones Automáticas para los Clientes** basadas en sus preferencias y las tendencias del restaurante.
 - **Optimización de Pedidos en la Cocina** con algoritmos de priorización según la complejidad de los platos y los tiempos estimados.
 - **Integración de Feedback** de los clientes para mejorar el menú y la calidad del servicio.
 - **Promociones Especiales**: Configura ofertas y promociones que se envían directamente a los clientes a través de la app.
 
----
 
-Los restaurantes no solo gestionan mejor su operativa: mejoran la experiencia del cliente, aumentan la eficiencia y optimizan sus recursos. Porque la gestión de un restaurante no debería ser una tarea complicada… ¡debería ser tan sabrosa como el platillo más delicioso de tu menú!
+## **Tecnologías Utilizadas**
+ 
+- Guzzle  
+- Laravel  
+- JavaScript
+- CSS & HTML 
 
----
-
-**Tecnologías Utilizadas**
-- Spring Boot
-- Guzzle
-- Laravel
