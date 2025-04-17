@@ -3,57 +3,135 @@ slug: Fend
 imageSrc: /images/fend.png
 altText: Proyecto Fend
 isFeatured: true
-Summary: "FEND, Es una solución móvil, ágil y segura para el control de accesos, diseñada para conectar a guardias, residentes, arrendadores y administradores. "
----
-# **FEND: La Solución Ágil y Segura para el Control de Accesos en Residencias**
-
-Es una solución móvil, ágil y segura para el control de accesos, diseñada para conectar a guardias, residentes, arrendadores y administradores. 
-
-# **Principales Funcionalidades**
+Summary: "FEND, Es una solución móvil, ágil y segura para el control de accesos, diseñada para conectar a guardias, residentes, arrendadores y administradores."
+Repository: "/"
 ---
 
-## **Para Residentes: Control Total desde el Celular**
+# **Fend: Tu Hogar Seguro**
+Aplicación integral de gestión residencial orientada a mejorar el control de acceso, la seguridad y la comunicación dentro de comunidades cerradas o residenciales. 
+El sistema contempla diferentes roles de usuario —**guardias de seguridad, habitantes residentes, arrendadores y administradores**—, cada uno con funcionalidades específicas deacuerdo a sus necesidades.
+Esta solución móvil busca optimizar la convivencia, fortalecer la seguridad y facilitar la administración de residencias mediante una única plataforma centralizada.
 
-- **QR Dinámico e Inteligente**: Genere un código QR único para ingresar a su residencia y permita que los miembros de su familia lo hagan también. Podrán registrar a los menores de edad.
-- **Invitados en Segundos**: Registre datos de visitantes y comparta un QR temporal por WhatsApp. Puede revocar el acceso en cualquier momento, incluso si ya fue compartido.
+## **Objetivo General del Proyecto**
+Formular una propuesta de negocio innovadora y desarrollar un proyecto basado en dicha idea, enfocándose específicamente en la construcción de un Producto Mínimo Viable (MVP). 
+Asimismo, preparar el proyecto para su presentación en una competencia de emprendimiento tipo StartUp Battle, mediante la estructuración y exposición efectiva de un pitch. 
 
----
+## **1. Residentes**
+A continuación se detallan las principales funcionalidades del actor del espacio residencial **Residentes**:
+### **1.1 Gestión de Acceso Personal**
+- Iniciar/cerrar sesión con credenciales, las cuales son facilitadas mediante una invitación digital (Enviada por el Administrador si el Residente es propietario o enviada por el Residente Propietario si es un Residente Habitante).
+- Restablecer contraseña mediante correo/teléfono.
+- Generar códigos QR únicos para ingreso a la residencia. 
+### **1.2 Gestión de Habitantes**
+- Registrar información personal de menores de edad residentes.
+- Enviar invitaciones a habitantes mayores de edad para que se registren en la aplicación y puedan generar sus propios códigos QR de acceso.
+### **1.3 Gestión de Visitantes**
+- Registrar información personal y de ingreso de visitantes. 
+- Generar/compartir códigos QR para visitantes (vía WhatsApp).
+- Revocar accesos de visitantes antes de su uso.
+- Listado de visitantes registrados (Lista de contactos).
+### **1.4 Perfil Personal**
+- Perfil personal en la aplicación. 
+- Recibir recordatorios automáticos (3 días antes de vencimientos)
+### **1.5 Calendario Personal**
+- Ver horarios de actividades agendas por el administrador de la colonia residencial (Por ejemplo, horario de recolección de la basura).
+- Recibir notificaciones comunitarias enviadas por el administrador de la colonia residencial.
+- Visualizar calendario de pagos registrados por el administrador de la colonia residencial (Por ejemplo: Pago mensual de seguridad; Pago anual de mantenimiento).
 
-## **Para Arrendadores: Poder en sus Manos**
+## **2. Administradores**
+A continuación se detallan las principales funcionalidades del actor del espacio residencial **Administradores**:
+### **2.1 Acceso Personal**
+- Iniciar/cerrar sesión con credenciales.
+### **2.2 Registros de la Residencial**
+- Registrar habitantes propietarios (con datos de vivienda).
+- Enviar invitación a habitantes propietarios a que completen el perfil en la aplicación. 
+- Registrar guardias de seguridad (datos personales y laborales).
+### **2.3 Gestión de Permisos**
+- Gestionar/desactivar permisos de guardias de seguridad.
+### **2.4 Comunicaciones**
+- Enviar notificaciones masivas (cortes de agua, reuniones)
+- Programar notificaciones (cambios en recolección de basura)
+### **2.5 Gestión Financiera**
+- Registrar pagos obligatorios (mantenimiento, reparaciones)
 
-- **Contratos Vivos**: Registre plazos de estadía, fechas de pago y cláusulas especiales. FEND envía recordatorios automáticos 5 días antes de cada vencimiento.
-- **Invite, Gestione, Controle**: Envíe una invitación digital a nuevos arrendatarios, quienes deberán completar su perfil y podrán crear accesos QR. Cuando termine el contrato, desactive los perfiles con un clic.
+## **3. Arrendadores**
+A continuación se detallan las principales funcionalidades del actor del espacio residencial **Arrendadores**:
+### **3.1 Gestión de Contratos**
+- Registrar información contractual (fechas de pago, tiempo de estadía y clausulaas especiales)
+- Registrar personas bajo contrato.
+### **3.2 Invitaciones**
+- Enviar invitaciones a arrendatarios para acceso a la aplicación.
+### **3.3 Control de Accesos**
+- Desactivar perfiles de ex-arrendatarios.
+- Restringir acceso temporalmente.
+### **3.4 Vsiaulización Arrendatarios**
+- Visualizar propiedades arrendadas activas.
 
----
+## **4. Guardias de Seguridad**
+A continuación se detallan las principales funcionalidades del actor del espacio residencial **Guardias de Seguridad**:
+### **4.1 Autenticación**
+- Iniciar/cerrar sesión con credenciales personales.
+### **4.2 Escaneo QR**
+- Escanear códigos QR de habitantes/visitantes.
+- Visualizar alertas de códigos vencidos.
+### **4.3 Verificación**
+- Visualizar información personal del visitante.
+- Verificar datos sensibles (fotografía, placa de automóvil).
+### **4.4 Control de Accesos**
+- Marcar accesos como 'denegados'.
+- Registrar motivos de denegación.
+- Generar un nuevo acceso de algun actor comunitario: recolección de la basura, tickets recibo de energía electrica.
 
-## **Para Guardias de Seguridad: No Más Registros en Papel**
+## **5. Mi Rol en el Proyecto**
 
-- **Escáner QR Inteligente**: Escanee códigos de habitantes o visitantes y reciba alertas de acceso: QR válido, inválido o bloqueado.
-- **Datos que Hablan**: Compare la foto del perfil con la persona frente a usted y verifique si la placa del auto coincide.
-- **Reportes Automáticos**: Marque un acceso denegado en la app y describa brevemente la razón.
+### **1. Diseño Conceptual**
+### 1.1 Propuesta de Modelo de Negocio
+- Elaboración de la descripción general de la marca.
+- Elaboración de documento de diseño de negocio (Business Model Canvas)
 
----
+### 1.2 Propuesta de Marca
+- Vectorización del logotipo.
+- Elaboración del manual de marca.
 
-## **Para Administradores: Mayor Agilidad**
+### **2. Arquitectura de la Aplicación**
+### 2.1 Identificación de Actores Principales
+- Modelado de roles y perfiles de usuario.
+- Definición de matriz de permisos y accesos.
 
-- **Registro Inteligente de Habitantes y Guardias**: Cree perfiles digitales de propietarios con detalles precisos en segundos. Registre guardias con permisos personalizables.
-- **Notificaciones que Respetan el Tiempo**: Envíe alertas específicas sobre cortes de agua o reuniones solo a quienes estén afectados.
-- **Registro Automatizado de Pagos Obligatorios**: Cobre cuotas de mantenimiento, reparaciones o multas con transacciones rastreables, sincronizadas con el perfil del residente.
+### 2.2 Especificación de Funcionalidades
+- Desarrollo de user stories por rol.
+- Diagramas de casos de uso (UML)
 
----
+### **3. Diseño de Interfaz**
+### 3.1 Prototipado
+- Creación de mockups de alta fidelidad.
 
-### Funcionalidades Adicionales en Desarrollo:
+### 3.2 Implementación de Vistas
+- Desarrollo de frontend para actores: Administrador colonia residencial y arrendadores.
+- Integración con sistema de autenticación.
 
-- **Apertura Automática del Control de Acceso** al escanear un QR válido.
-- **Recibir Pagos de Alquiler en la App** con registro automático.
-- **Dashboard con Métricas de Pagos** para el administrador, ayudando a identificar morosidad.
-- **Alertas de Seguridad** al residente cuando alguien ingresa.
----
-**Con FEND**, los residentes no solo protegen su hogar: recuperan su tiempo, su paz y su derecho a vivir sin complicaciones. Porque la seguridad no debería sentirse como un interrogatorio… ¡debería sentirse como estar en casa!
+### **4. Preparación para Inversión**
+### 4.1 Material para Pitch Deck
+- Diseño de assets visuales para presentación.
+- Elaboración de storytelling.
 
----
-**Tecnologías Utilizadas**
+### 4.2 Desarrollo de Pitch
+- Redacción de guión pitch.
+- Entrenamiento en presentación.
+
+### **5. Ingeniería de Datos**
+### 5.1 Modelado de Base de Datos
+- Diseño de esquema relacional
+- Normalización de tablas
+- Diagrama ER (Entidad-Relación)
+
+### **6. Aseguramiento de Calidad**
+### 6.1 QA Backend
+- Ejecución de test cases
+- Validación de endpoints
+
+## **6. Tecnologias Utilizadas**
+
 - React Native
+- Expo 
 - FastAPI
-- PostGreSQL
-
