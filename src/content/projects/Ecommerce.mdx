@@ -1,26 +1,94 @@
 ---
 slug: Ecommerce
-imageSrc: /images/ecommerce.png
+imageSrc: /images/restaurante.png
 altText: Proyecto Ecommerce
 isFeatured: false
 Summary: "Infraestructura e-commerce en Azure con frontend (web apps), backend (APIs + colas), almacenamiento (media/ACR), base de datos (SQL + Redis) y búsqueda (Cognitive Search). Desplegada con Terraform, escalable y segura para clientes (frontoffice) y administradores (backoffice)."
+Repository: "https://github.com/Ecommerce-Architecture-Microsoft-Azure"
 ---
 # Infraestructura E-commerce en Azure
 
-Infraestructura diseñada para un sistema de comercio electrónico (e-commerce) en Azure, utilizando servicios escalables y gestionados.
+Infraestructura diseñada para un sistema de comercio electrónico (e-commerce) en Microsoft Azure, utilizando servicios escalables y flexibles.
 
----
+## **Objetivo General del Proyecto**
+Proponer los servicios y la Infraestructura de Microsoft Azure que cumpla con los requerimientos planteados: Una organización enfocada al comercio en línea busca evolucionar su plataforma
+con miras a la escalabilidad y la flexibilidad. Han definido ciertos requerimientos que involucran ofrecer contenido estático, facilitar dos aplicaciones web distintas
+para los usuarios (pública y administrativa), manejar tareas en segundo plano, contar con un almacenamiento de archivos y un componente que acelere las consultas más frecuentes.
 
-## Descripción General
-Arquitectura modular que incluye:
-- **Frontend**: Aplicaciones web para usuarios (frontoffice) y administradores (backoffice).
-- **Backend**: APIs y procesamiento asíncrono.
-- **Almacenamiento**: Multimedia y colas de mensajería.
-- **Base de Datos**: SQL Server para información transaccional.
-- **Cache**: Redis para optimizar rendimiento.
-- **Búsqueda**: Azure Cognitive Search para funcionalidades de búsqueda.
+## Diseño de la Solución
 
----
+<div class="flex justify-center my-4">
+  <img 
+    src="/images/e-commerce Architecture Explain.png" 
+    alt="Interfaz del Restaurante" 
+    class="rounded-lg"
+  />
+</div>
 
+### **1. UI (Frontend) de Front-Office descarga la imagen del contenedor desde Azure Container Registries**
+- **Relación:** El servicio UI obtiene su contenedor desde Azure Container Registry.
+- **Función:** El contenedor de frontend es desplegado automáticamente desde un repositorio de imágenes Docker.
 
+### **2. UI (Frontend) de Back-Office descarga la imagen del contenedor desde Azure Container Registries**
+- **Relación:** El servicio UI obtiene su contenedor desde Azure Container Registry.
+- **Función:** El contenedor de frontend es desplegado automáticamente desde un repositorio de imágenes Docker.
 
+### **3. API del Front-Office se despliega desde Azure Container Registries**
+- **Relación:** Similar al frontend, la API también obtiene su contenedor desde Azure Container Registry.
+- **Función:** Permite el despliegue automatizado y escalable del backend del Front-Office.
+
+### **4. API del Back-Office descarga la imagen del contenedor desde Azure Container Registries**
+- **Relación:** Similar al frontend, la API también obtiene su contenedor desde Azure Container Registry.
+- **Función:** Permite el despliegue automatizado y escalable del backend del Back-Office.
+
+### **5. Repositorio GitHub hacia Static Web App**
+- **Relación:** Código fuente desplegado automáticamente desde GitHub.
+- **Función:** Automatización del despliegue continuo (CI/CD) de la aplicación estática (landing page o documentación).
+
+### **6. Comunicación entre UI y API del Front-Office**
+- **Relación:** Comunicación directa entre frontend y backend dentro de la misma App Service.
+- **Función:** La UI del Front-Office consume los datos de su API correspondiente.
+
+### **7. Comunicación entre UI y API del Back-Office**
+- **Relación:** Interacción para administración o dashboards.
+- **Función:** La UI del Back-Office consume los datos de su API correspondiente.
+
+### **8. La API frontoffice escribe o consulta datos en Azure SQL Database**
+- **Relación:** Persistencia de datos estructurados.
+- **Función:** Productos, usuarios, órdenes, etc.
+
+### **9. Comunicación entre la API del Front-Office y Azure Storage Container (Media)**
+- **Relación:** La API del Front-Office accede al contenedor de almacenamiento de blobs.
+- **Función:** Para leer o subir archivos multimedia, como imágenes de productos o comprobantes.
+
+### **10. Comunicación entre la API del Front-Office y Azure Cognitive Search**
+- **Relación:** La API hace consultas al motor de búsqueda.
+- **Función:** Obtener resultados de búsqueda optimizados para mostrar al usuario final.
+
+### **11. Comunicación entre la API del Front-Office y Azure Cache Redis**
+- Relación: Acceso a caché de datos.
+- Función: Mejorar el rendimiento utilizando resultados almacenados temporalmente, por ejemplo, búsquedas recientes o configuraciones comunes.
+
+### **12. API del Front-Office envía mensajes a Azure Queue Storage**
+- **Relación:** Comunicación asincrónica.
+- **Función:** Para procesos que pueden ejecutarse en segundo plano (ej. procesamiento de imágenes, validación de pago, etc.).
+
+### **13. Azure Function se dispara al recibir un mensaje de la cola**
+- **Relación:** Desencadenador por cola.
+- **Función:** Procesa tareas asincrónicas (transformaciones, integración, notificaciones, etc.).
+
+### **14. Azure Function consulta Azure SQL Database**
+- **Relación:** Procesamiento con acceso a datos persistentes.
+- **Función:** Obtener más datos antes de ejecutar tareas, validar estados, etc.
+
+### **15. Comunicación entre la API del Back-Office y Azure SQL Database**
+- **Relación:** Persistencia y lectura de datos administrativos.
+- **Función:** Para manejar información como usuarios, inventarios, pedidos, etc., desde la parte administrativa del sistema.
+
+### **16. Comunicación entre la API del Back-Office y Azure Storage Container (Media)**
+- **Relación:** Lectura o escritura de archivos desde el contenedor.
+- **Función:** Para gestión de archivos desde el entorno administrativo, como subir imágenes de productos, reportes, u otros documentos.
+
+### **17. Comunicación entre la API del Back-Office y Azure Queue Storage**
+- **Relación:** Envío de tareas asincrónicas a la cola.
+- **Función:** Desencadenar procesos como envío de correos, actualizaciones masivas, procesamiento de archivos, etc.
