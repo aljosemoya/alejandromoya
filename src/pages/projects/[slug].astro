@@ -1,42 +1,54 @@
 ---
 import Layout from '../../layouts/MainLayout.astro';
-import { getCollection, getEntry } from 'astro:content';
+import {getCollection, type CollectionEntry} from 'astro:content';
 
-// Generar paths estáticos
+
+type Project = CollectionEntry<'projects'> & {
+    render:() => Promise<{ content: any; headings: any[] }>,
+} & {slug: string}
+
 export async function getStaticPaths() {
-  const projects = await getCollection('projects');
-  return projects.map((project) => ({
-    params: { slug: project.slug },
+  const projects: Project[] = await getCollection('projects');
+  return projects.map(project => ({
+    params: { slug: project.slug }, props: { project },
   }));
 }
-const { slug } = Astro.params;
-if (!slug) {
-  return new Response(null, { status: 404 });
+
+interface Props {
+  project: Project;
 }
 
-const project = await getEntry('projects', slug);
+const { project } = Astro.props;
 const { Content, headings } = await project.render();
 ---
 
-<Layout title={project.data.title}>
-  <section class="container mx-auto px-4 sm:px-6 lg:px-8 py-16 mt-16">
-    <div class="max-w-7xl mx-auto">
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-16 items-start">
-        {project.data.imageSrc && (
-            <div class="relative group rounded-2xl overflow-hidden shadow-2xl">
-              <img 
-                src={project.data.imageSrc} 
-                alt={project.data.altText || 'Imagen del proyecto'} 
-                class="w-full h-auto max-w-full object-contain"
-                loading="lazy"
-              />
-              <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
-            </div>
-          )}
-        <article class="text-white">
-            <Content />
-        </article>
-      </div>
+<Layout title={project.data.slug}>
+  <section class="container mx-auto px-6 sm:px-8 lg:px-12 py-12">
+    <h2 class="text-center text-4xl font-bold bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent mb-6 mx-auto">{project.data.slug}</h2>
+    <nav class="toc mb-12 p-6 rounded-xl bg-white/10 backdrop-blur-sm shadow-lg border border-white/20">
+      <h2 class="text-2xl font-semibold text-purple-100 mb-4 tracking-normal leading-snug">Tabla de Contenido</h2>
+      <ul class="space-y-2">
+        {headings.map((heading: any) => (
+          <li class={`toc-level-${heading.depth} ml-${(heading.depth - 1) * 2}`}>
+            <a href={`#${heading.slug}`} class="text-purple-200 hover:text-white transition-colors duration-200">
+              {heading.text}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </nav>
+    <article class="markdownStyle prose prose-invert max-w-none text-white">
+      <Content />
+    </article>
+    <div class="mt-8 text-center">
+      <a
+        href= {project.data.Repository}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-block text-white font-semibold bg-blue-600 hover:bg-blue-700 px-6 py-3 rounded-lg transition duration-200"
+      >
+        Visita el repositorio en GitHub
+      </a>
     </div>
   </section>
 </Layout>
